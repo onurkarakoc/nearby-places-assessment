@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NearbyPlacesService } from 'src/app/services/nearby-places.service';
 import { Request } from 'src/app/models/request.model';
 import { Router } from '@angular/router';
+import { Place } from 'src/app/models/place.model';
 
 @Component({
   selector: 'app-places-list',
@@ -11,6 +12,7 @@ import { Router } from '@angular/router';
 export class PlacesListComponent implements OnInit {
 
   request: Request = new Request();
+  places: Place[];
 
   constructor(private nearbyPlacesService: NearbyPlacesService,
     private router: Router) { }
@@ -21,7 +23,7 @@ export class PlacesListComponent implements OnInit {
   getPlaces() {
     this.nearbyPlacesService.getAll(this.request).subscribe(data => {
       console.log(data);
-      this.goToPlacesList();
+      this.places = data;
     },
       error => console.log(error));
   }
