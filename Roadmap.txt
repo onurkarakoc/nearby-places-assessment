@@ -1,0 +1,6 @@
+1- Backend Implementation - Data Manipulation
+2- Frontend Implementation - Data Visualization
+3- Database Connection
+4- Serve with docker
+5- Test
+6- Deploy
