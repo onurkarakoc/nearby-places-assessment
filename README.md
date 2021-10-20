@@ -1,6 +1,8 @@
 
 # Nearby Place Search
-You can find places near you just using three parameters: Latitude, Longitude and Radius
+You can find places near you just using three parameters: Latitude, Longitude and Radius.
+Places will be listed with their id, latitude, longitude and name.
+In addition, places will be marked on the map, you can zoom in and out find the places.
 
 ## Tech / Framework
 - [Spring Boot](https://spring.io/)
