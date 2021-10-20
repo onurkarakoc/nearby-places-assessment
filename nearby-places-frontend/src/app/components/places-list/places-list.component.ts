@@ -13,6 +13,14 @@ export class PlacesListComponent implements OnInit {
 
   request: Request = new Request();
   places: Place[];
+  show = false;
+
+  markers: any;
+
+  mapOptions: google.maps.MapOptions = {
+    center: { lat: 40, lng: 32 },
+    zoom: 1
+  };
 
   constructor(private nearbyPlacesService: NearbyPlacesService,
     private router: Router) { }
@@ -24,18 +32,21 @@ export class PlacesListComponent implements OnInit {
     this.nearbyPlacesService.getAll(this.request).subscribe(data => {
       console.log(data);
       this.places = data;
+      this.markers = [];
+      for (let idx in this.places) {
+        this.markers.push({
+          position: {
+            lat: this.places[idx].latitude,
+            lng: this.places[idx].longitude
+          }
+        })
+      }
+      this.show = true;
     },
       error => console.log(error));
   }
 
-  goToPlacesList() {
-    this.router.navigate(['/places']);
-  }
-
   onSubmit() {
-    console.log(this.request.latitude);
-    console.log(this.request.longitude);
-    console.log(this.request.radius);
     this.getPlaces();
   }
 

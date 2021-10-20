@@ -73,3 +73,9 @@
         </tr>
     </tbody>
 </table>
+
+<div class="my-google-map" *ngIf="show">
+    <google-map [options]="mapOptions">
+        <map-marker *ngFor="let marker of markers" [position]="marker.position"></map-marker>
+    </google-map>
+</div>
